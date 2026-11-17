@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Фотекс - оформление ВК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,500&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1d2a44;--paper:#f6efe3;--paper2:#ece2d0;--coral:#c24a31;--gold:#a87a22;--mint:#7fb8a4;--vk:#edeef0;--card:#fff;--muted:#5a6276}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Manrope,system-ui,sans-serif;background:#d9dbe0;color:var(--ink);overflow-x:hidden}
+.top{position:sticky;top:0;z-index:20;background:var(--ink);color:#fff;display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 16px;flex-wrap:wrap}
+.top b{font-weight:800;letter-spacing:.02em}
+.top small{opacity:.7}
+.seg{display:flex;background:#ffffff1f;border-radius:10px;padding:3px}
+.seg button{border:0;background:none;color:#fff;font:600 13px Manrope;padding:7px 14px;border-radius:8px;cursor:pointer}
+.seg button.on{background:#fff;color:var(--ink)}
+.stage{padding:24px 16px 60px;display:flex;justify-content:center}
+.vk{width:100%;max-width:1000px;transition:max-width .5s cubic-bezier(.2,.8,.2,1)}
+.mob .vk{max-width:390px}
+.shell{background:var(--vk);border-radius:14px;overflow:hidden;box-shadow:0 20px 60px #1d2a4433}
+.mob .shell{border-radius:34px;border:10px solid #111;}
+/* cover */
+.cover{position:relative;aspect-ratio:1590/530;background:var(--paper);overflow:hidden}
+.mob .cover{aspect-ratio:auto;height:560px}
+.cover:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 27px,#1d2a4412 27px 28px);}
+.cover:after{content:"";position:absolute;left:8%;top:0;bottom:0;width:2px;background:#e0644a55}
+.cv-text{position:absolute;left:12%;top:50%;transform:translateY(-50%);max-width:46%;z-index:2}
+.mob .cv-text{left:9%;top:9%;transform:none;max-width:82%}
+.cv-kicker{font:700 12px Manrope;letter-spacing:.18em;text-transform:uppercase;color:var(--coral)}
+.cv-h{font:700 clamp(22px,3.6vw,40px)/1.08 Lora;margin:10px 0 12px}
+.cv-h i{font-weight:500;color:var(--coral)}
+.cv-sub{font-size:clamp(12px,1.3vw,15px);color:var(--muted);max-width:30em}
+.mob .cv-h{font-size:30px}.mob .cv-sub{font-size:14px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.chip{background:#fff;border:1px solid #1d2a441a;border-radius:20px;padding:5px 10px;font:600 11px Manrope}
+/* book */
+.book{position:absolute;right:13%;top:50%;width:21%;aspect-ratio:21/30;transform:translateY(-50%) rotate(-4deg);perspective:1400px;z-index:2}
+.mob .book{right:auto;left:62%;top:auto;bottom:5%;width:34%;transform:translateX(-50%) rotate(-3deg)}
+.pg{position:absolute;inset:0;border-radius:4px 10px 10px 4px;box-shadow:0 18px 40px #1d2a4440}
+.pg.back{background:var(--paper2);overflow:hidden}
+.lid{transform-origin:left center;transition:transform 1.2s cubic-bezier(.3,.7,.2,1);transform-style:preserve-3d;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:10%}
+.book.open .lid{transform:rotateY(-100deg)}
+.lid{backface-visibility:hidden}
+.lid .por{width:58%;aspect-ratio:3/4;border-radius:50% 50% 46% 46%;background:radial-gradient(circle at 50% 36%,#f2c9a8 0 22%,transparent 23%),radial-gradient(ellipse at 50% 100%,var(--coral) 0 46%,transparent 47%),linear-gradient(#e9d6b8,#d8c09a);border:3px solid var(--gold)}
+.lid .nm{font:700 clamp(10px,1.4vw,16px) Lora;margin-top:10%}
+.lid .yr{font:600 clamp(8px,.9vw,11px) Manrope;letter-spacing:.2em;color:#e3b95e;margin-top:4%}
+.vig{position:absolute;inset:8%;display:grid;grid-template-columns:repeat(4,1fr);gap:6%;align-content:center}
+.vig span{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 50% 40%,#f2c9a8 0 26%,transparent 27%),radial-gradient(ellipse at 50% 100%,var(--c) 0 50%,transparent 51%),#fff;border:2px solid #fff;box-shadow:0 2px 6px #0002}
+.vig b{grid-column:1/-1;text-align:center;font:700 clamp(8px,1vw,12px) Lora}
+/* header */
+.head{background:var(--card);display:flex;gap:16px;align-items:center;padding:0 20px 16px;position:relative}
+.ava{width:110px;height:110px;border-radius:50%;border:5px solid #fff;margin-top:-40px;background:var(--ink);display:grid;place-items:center;flex:none;position:relative;z-index:3}
+.ava svg{width:60%}
+.mob .head{flex-direction:column;text-align:center;gap:6px}
+.mob .ava{width:96px;height:96px}
+.hn{font:800 20px Manrope}
+.hs{color:var(--muted);font-size:13px;margin-top:3px}
+.btns{margin-left:auto;display:flex;gap:8px}
+.mob .btns{margin:6px 0 0}
+.b{border:0;border-radius:9px;padding:9px 16px;font:700 13px Manrope;cursor:pointer}
+.b1{background:var(--coral);color:#fff}.b2{background:var(--vk);color:var(--ink)}
+.grid{display:grid;grid-template-columns:1fr 290px;gap:14px;padding:14px}
+.mob .grid{grid-template-columns:1fr;padding:10px}
+.grid>div,.card{min-width:0}
+.card{background:var(--card);border-radius:12px;padding:16px}
+.ttl{font:800 14px Manrope;display:flex;justify-content:space-between;margin-bottom:12px}
+.ttl em{font-style:normal;color:var(--muted);font-weight:600}
+/* menu */
+.menu{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.mi{flex:none;width:118px;cursor:pointer;transition:transform .25s}
+.mi:hover{transform:translateY(-3px)}
+.mi .im{aspect-ratio:376/256;border-radius:10px;display:flex;align-items:flex-end;padding:8px;font:800 12px/1.1 Manrope;color:#fff;position:relative;overflow:hidden}
+.mi .im:before{content:"";position:absolute;right:-12px;top:-12px;width:54px;height:54px;border-radius:50%;background:#ffffff26}
+.mi .im i{position:absolute;right:8px;top:7px;font-style:normal;font:700 18px Lora;opacity:.85}
+.mi p{font-size:12px;margin-top:6px;font-weight:600}
+/* goods */
+.goods{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mob .goods{grid-template-columns:repeat(2,1fr)}
+.g{cursor:pointer}
+.g .ph{aspect-ratio:1;border-radius:10px;background:var(--paper);position:relative;overflow:hidden;display:grid;place-items:center}
+.g .ph .mini{width:52%;aspect-ratio:21/30;background:var(--ink);border-radius:2px 6px 6px 2px;box-shadow:6px 8px 0 var(--paper2),0 10px 20px #0003;transform:rotate(-6deg);transition:transform .35s}
+.g:hover .mini{transform:rotate(0) scale(1.05)}
+.g .ph .tag{position:absolute;left:8px;top:8px;background:var(--coral);color:#fff;font:700 10px Manrope;padding:3px 7px;border-radius:6px}
+.g b{display:block;font-size:14px;margin-top:8px}
+.g p{font-size:12px;color:var(--muted)}
+/* post */
+.post .ph{border-radius:10px;overflow:hidden;background:var(--ink);color:#fff;padding:22px;position:relative;min-height:190px}
+.post .ph h3{font:700 24px/1.15 Lora;max-width:14em}
+.post .ph h3 i{color:#e3b95e}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+.mob .steps{grid-template-columns:repeat(2,1fr)}
+.st{background:#ffffff14;border-radius:8px;padding:10px;font-size:12px}
+.st b{display:block;font:700 20px Lora;color:#e3b95e}
+.pt{font-size:13px;line-height:1.55;margin:12px 0 4px}
+/* side */
+.side .row{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--vk);font-size:13px}
+.side .row:last-child{border:0}
+.dot{width:30px;height:30px;border-radius:8px;background:var(--paper);display:grid;place-items:center;flex:none;font-weight:800;color:var(--coral)}
+.rev{font-size:13px;line-height:1.5}
+.rev b{color:var(--gold)}
+.calc label{font-size:12px;color:var(--muted);display:block;margin:8px 0 4px}
+.calc input{width:100%;accent-color:var(--coral)}
+.calc .sum{font:700 26px Lora;margin-top:10px}
+.calc .sum small{font:600 12px Manrope;color:var(--muted)}
+.note{max-width:1000px;margin:18px auto 0;font-size:12px;color:#4a5266;text-align:center}
+/* modal */
+.mod{position:fixed;inset:0;background:#1d2a44b0;display:none;place-items:center;z-index:50;padding:16px}
+.mod.on{display:grid}
+.mb{background:#fff;border-radius:14px;max-width:420px;width:100%;padding:22px;animation:up .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes up{from{transform:translateY(20px);opacity:0}}
+.mb h4{font:700 22px Lora;margin-bottom:8px}
+.mb p,.mb li{font-size:14px;line-height:1.55}
+.mb ul{margin:8px 0 14px 18px}
+@media (max-width:700px){.grid{grid-template-columns:1fr}.goods{grid-template-columns:repeat(2,1fr)}.btns{margin-left:0}.head{flex-wrap:wrap}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div><b>Фотекс · выпускные альбомы</b> <small>- концепт оформления сообщества ВКонтакте</small></div>
+  <div class="seg"><button class="on" data-v="pc">Компьютер</button><button data-v="mob">Телефон</button></div>
+</div>
+
+<div class="stage" id="stage">
+<div class="vk"><div class="shell">
+
+  <div class="cover">
+    <div class="cv-text">
+      <div class="cv-kicker">Ковров · детские сады и школы</div>
+      <h1 class="cv-h">Альбом, который откроют <i>через 20 лет</i></h1>
+      <p class="cv-sub">Выпускные фотокниги: съёмка, авторский дизайн, печать и доставка в группу - под ключ.</p>
+      <div class="chips"><span class="chip">от 1 900 ₽</span><span class="chip">твёрдая обложка</span><span class="chip">образцы бесплатно</span></div>
+    </div>
+    <div class="book" id="book">
+      <div class="pg back"><div class="vig" id="vig"><b>Наша группа · 2027</b></div></div>
+      <div class="pg lid"><div class="por"></div><div class="nm">Маша Соколова</div><div class="yr">ВЫПУСК 2027</div></div>
+    </div>
+  </div>
+
+  <div class="head">
+    <div class="ava"><svg viewBox="0 0 60 60" fill="none"><rect x="10" y="8" width="34" height="44" rx="3" fill="#f6efe3"/><rect x="16" y="8" width="34" height="44" rx="3" fill="#e0644a"/><circle cx="33" cy="26" r="7" fill="#f6efe3"/><path d="M22 46c2-7 7-10 11-10s9 3 11 10" fill="#f6efe3"/></svg></div>
+    <div>
+      <div class="hn">Фотекс - выпускные фотоальбомы</div>
+      <div class="hs">Фотокниги для детских садов и школ · Ковров · ★ 5,0 · 935 подписчиков</div>
+    </div>
+    <div class="btns"><button class="b b1" data-m="zakaz">Заказать образцы</button><button class="b b2">Подписаться</button></div>
+  </div>
+
+  <div class="grid">
+    <div style="display:grid;gap:14px">
+      <div class="card">
+        <div class="ttl">Меню <em>6 разделов</em></div>
+        <div class="menu">
+          <div class="mi" data-m="price"><div class="im" style="background:#c24a31"><i>₽</i>Цены</div><p>Все форматы</p></div>
+          <div class="mi" data-m="obr"><div class="im" style="background:#1d2a44"><i>◫</i>Образцы</div><p>Листаем альбомы</p></div>
+          <div class="mi" data-m="zakaz"><div class="im" style="background:#94681a"><i>4</i>Как заказать</div><p>4 шага</p></div>
+          <div class="mi" data-m="sad"><div class="im" style="background:#3d7a66"><i>✿</i>Детский сад</div><p>Альбомы ДС</p></div>
+          <div class="mi" data-m="shk"><div class="im" style="background:#5b6fa8"><i>✎</i>Школа</div><p>4, 9, 11 класс</p></div>
+          <div class="mi" data-m="otz"><div class="im" style="background:#a35d7a"><i>★</i>Отзывы</div><p>Родители о нас</p></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ttl">Товары <em>Все 6</em></div>
+        <div class="goods">
+          <div class="g" data-m="trumo"><div class="ph"><span class="tag">хит</span><div class="mini" style="background:#1d2a44"></div></div><b>Альбом-трюмо</b><p>21×30 · 6 стр · 2 200 ₽</p></div>
+          <div class="g" data-m="ds"><div class="ph"><div class="mini" style="background:#3d7a66"></div></div><b>Большой для сада</b><p>21×30 · 24 стр · 3 600 ₽</p></div>
+          <div class="g" data-m="shk"><div class="ph"><span class="tag">школа</span><div class="mini" style="background:#5b6fa8"></div></div><b>Большой школьный</b><p>21×30 · 24 стр · 3 600 ₽</p></div>
+        </div>
+      </div>
+
+      <div class="card post">
+        <div class="ttl">Закреплённый пост</div>
+        <div class="ph">
+          <h3>Как появляется выпускной альбом - <i>4 шага</i> без хлопот для родителей</h3>
+          <div class="steps">
+            <div class="st"><b>1</b>Привозим образцы в группу</div>
+            <div class="st"><b>2</b>Согласуем дату съёмки</div>
+            <div class="st"><b>3</b>Съёмка и макет на согласование</div>
+            <div class="st"><b>4</b>Печать и доставка, оплата по факту</div>
+          </div>
+        </div>
+        <p class="pt">Единый стиль постов: тёмно-синяя «обложка», золотые акценты, в каждом посте - фото разворота, формат, цена и кнопка «Заказать образцы». Родители сразу видят, что это одна аккуратная студия, а не случайная перепечатка.</p>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:14px;align-content:start">
+      <div class="card side">
+        <div class="ttl">О студии</div>
+        <div class="row"><span class="dot">✓</span>Съёмка, дизайн и печать - всё сами</div>
+        <div class="row"><span class="dot">✓</span>Ламинация от царапин и влаги</div>
+        <div class="row"><span class="dot">✓</span>Портрет ребёнка на обложке</div>
+        <div class="row"><span class="dot">⌂</span>3 адреса в Коврове</div>
+      </div>
+      <div class="card calc">
+        <div class="ttl">Калькулятор книги 20×26</div>
+        <label>Разворотов: <b id="rv">4</b> (<span id="st">10</span> стр.)</label>
+        <input type="range" min="1" max="8" value="4" id="r">
+        <div class="sum"><span id="sum">2 400</span> ₽ <small>за альбом</small></div>
+      </div>
+      <div class="card rev">
+        <div class="ttl">Отзывы <em>★ 5,0</em></div>
+        <p><b>★★★★★</b> «Открыли альбом всей семьёй - бабушка плакала. Портрет на обложке как живой.» <br><small style="color:var(--muted)">- пример отзыва</small></p>
+      </div>
+    </div>
+  </div>
+
+</div></div>
+</div>
+
+<p class="note">Концепт оформления для обсуждения. Фото детей и групп - заглушки: в готовом оформлении будут ваши реальные развороты. Обложка и аватар подгоняются под размеры ВК (1590×530 и 1080×1920), меню-кнопки 376×256.</p>
+
+<div class="mod" id="mod"><div class="mb" id="mb"></div></div>
+
+<script>
+const C={price:['Цены','<ul><li>Трюмо 21×30, 6 стр - 2 200 ₽</li><li>Книга 20×26 - от 1 900 ₽ (1 разворот) до 3 100 ₽ (8 разворотов)</li><li>Большая книга 21×30, 24 стр - 3 600 ₽</li></ul>'],
+obr:['Образцы','<p>Раздел-галерея: 10-15 развороты реальных альбомов, по одному на каждый формат, с подписью «что внутри».</p>'],
+zakaz:['Заказать образцы','<p>Кнопка ведёт в сообщения сообщества с готовой фразой: «Здравствуйте! Хотим посмотреть образцы выпускных альбомов. Сад/школа: ..., группа/класс: ...».</p>'],
+sad:['Детский сад','<p>Статья: разделы альбома (обложка с портретом, коллаж группы, виньетка с именами, педагоги, художественный портрет), форматы и цены.</p>'],
+shk:['Школа','<p>Альбомы для 4, 9 и 11 классов: книга 21×30, 24 страницы, тиснёная фотобумага - 3 600 ₽.</p>'],
+otz:['Отзывы','<p>Подборка отзывов родителей и воспитателей с фото разворотов - самый сильный аргумент для новых групп.</p>'],
+trumo:['Альбом-трюмо','<p>21×30 см, твёрдая обложка и страницы в ламинации, 6 страниц. Портрет на обложке, коллаж группы, виньетка, педагоги. <b>2 200 ₽</b></p>'],
+ds:['Большой для детского сада','<p>21×30 см, 24 страницы, мягкие страницы на тиснёной фотобумаге. <b>3 600 ₽</b></p>']};
+const mod=document.getElementById('mod'),mb=document.getElementById('mb');
+document.querySelectorAll('[data-m]').forEach(e=>e.onclick=()=>{const c=C[e.dataset.m];mb.innerHTML='<h4>'+c[0]+'</h4>'+c[1]+'<button class="b b1">Написать сообществу</button>';mod.classList.add('on')});
+mod.onclick=e=>{if(e.target===mod||e.target.tagName==='BUTTON')mod.classList.remove('on')};
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.seg button').forEach(x=>x.classList.toggle('on',x===b));document.body.classList.toggle('mob',b.dataset.v==='mob')});
+const book=document.getElementById('book');setTimeout(()=>book.classList.add('open'),900);setInterval(()=>book.classList.toggle('open'),4200);
+const cols=['#e0644a','#7fb8a4','#c99a3c','#5b6fa8','#a35d7a','#1d2a44','#e0644a','#7fb8a4'],vig=document.getElementById('vig');
+cols.forEach(c=>{const s=document.createElement('span');s.style.setProperty('--c',c);vig.insertBefore(s,vig.lastElementChild)});
+const P=[1900,2100,2200,2400,2500,2700,2900,3100],r=document.getElementById('r');
+r.oninput=()=>{const v=+r.value;document.getElementById('rv').textContent=v;document.getElementById('st').textContent=v*2+2;document.getElementById('sum').textContent=P[v-1].toLocaleString('ru')};
+</script>
+</body>
+</html>
